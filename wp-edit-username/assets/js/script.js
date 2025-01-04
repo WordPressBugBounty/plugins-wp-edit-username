@@ -14,7 +14,7 @@ jQuery( document ).ready( function( $ )
 
 	$container.find( '.description' ).remove();
 	
-	$input.after( '<button class="button" id="edit_username_modal_btn" data-toggle="modal" data-target="#edit_username_modal">Edit</button>' );
+	$input.after( '<button class="button" type="button" id="edit_username_modal_btn" data-toggle="modal" data-target="#edit_username_modal">Edit</button>' );
 
 	$( document ).on( 'click', "#edit_username_modal_btn", function( e )
 	{	

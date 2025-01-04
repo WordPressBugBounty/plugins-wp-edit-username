@@ -1,13 +1,12 @@
 #edit_username_modal_btn{
-    margin-left: 8px;
-    font-size: 1em;
+	margin-left: 8px;
 }
 
 .mb-3 {
-    margin-top: 1rem !important;
+	margin-top: 1rem !important;
 }
 
 #wpeu_message{
-    display:none;
-    font-size: 1.3em;
+	display:none;
+	font-size: 1.3em;
 }

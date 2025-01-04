@@ -1,9 +1,9 @@
 === WP Edit Username ===
 Contributors: sajjad67
-Tags: user,user-profile,profile-edit,edit,ajax,update,change-username,username
+Tags: user-profile,profile-edit,ajax,change-username,username
 Requires at least: 5.6
 Tested up to: 6.6
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,8 @@ Update inputs according to your requirement and you are good to go.
 4. After Username Changed Message.
 
 == Changelog ==
+= 1.0.8 =
+- Updated button type from default 'submit' to 'button'
 = 1.0.7 =
 - Checked for latest wp version 6.6
 = 1.0.6 =

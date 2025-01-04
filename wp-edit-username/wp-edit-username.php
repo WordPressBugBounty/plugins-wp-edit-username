@@ -3,7 +3,7 @@
 Plugin Name: WP Edit Username
 Plugin URI : https://wordpress.org/plugins/wp-edit-username/
 Description: Change Wordpress User's Username From Edit User Admin Panel.
-Version: 1.0.7
+Version: 1.0.8
 Author: Sajjad Hossain Sagor
 Author URI: https://profiles.wordpress.org/sajjad67
 Text Domain: wp-edit-username
@@ -240,9 +240,9 @@ if ( ! class_exists( 'WP_Edit_Username' ) )
 		 */
 		public function enqueue_styles()
 		{
-			wp_enqueue_style( $this->plugin_name, WPEU_PLUGIN_URL . 'assets/css/style.css', array(), false );
+			wp_enqueue_style( $this->plugin_name, WPEU_PLUGIN_URL . 'assets/css/style.css', array(), '1.0.8', false );
 			
-			wp_enqueue_style( $this->plugin_name . "bootstrap_css", WPEU_PLUGIN_URL . 'assets/css/bootstrap.css', array(), '', false );
+			wp_enqueue_style( $this->plugin_name . "bootstrap_css", WPEU_PLUGIN_URL . 'assets/css/bootstrap.css', array(), '4.1.0', false );
 		}
 
 		/**
@@ -252,11 +252,11 @@ if ( ! class_exists( 'WP_Edit_Username' ) )
 		 */
 		public function enqueue_scripts()
 		{
-			wp_enqueue_script( $this->plugin_name . "bootstrap_popper", WPEU_PLUGIN_URL . 'assets/js/popper.min.js', array( 'jquery' ), '', true );
+			wp_enqueue_script( $this->plugin_name . "bootstrap_popper", WPEU_PLUGIN_URL . 'assets/js/popper.min.js', array( 'jquery' ), '4.1.0', true );
 			
-			wp_enqueue_script( $this->plugin_name . "bootstrap_js", WPEU_PLUGIN_URL . 'assets/js/bootstrap.min.js', array( 'jquery', $this->plugin_name . "bootstrap_popper"), '', true );
+			wp_enqueue_script( $this->plugin_name . "bootstrap_js", WPEU_PLUGIN_URL . 'assets/js/bootstrap.min.js', array( 'jquery', $this->plugin_name . "bootstrap_popper"), '4.1.0', true );
 			
-			wp_enqueue_script( $this->plugin_name, WPEU_PLUGIN_URL . 'assets/js/script.js', array( 'jquery', $this->plugin_name . "bootstrap_js" ), '', true );
+			wp_enqueue_script( $this->plugin_name, WPEU_PLUGIN_URL . 'assets/js/script.js', array( 'jquery', $this->plugin_name . "bootstrap_js" ), '1.0.8', true );
 		}
 
 		public function show_edit_modal()
