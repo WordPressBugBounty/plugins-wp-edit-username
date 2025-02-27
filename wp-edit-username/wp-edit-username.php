@@ -8,13 +8,13 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @since             1.0.0
+ * @since             2.0.0
  * @package           WP_Edit_Username
  *
  * Plugin Name:       WP Edit Username
  * Plugin URI:        https://wordpress.org/plugins/wp-edit-username/
  * Description:       Change Wordpress User's Username From Edit User Admin Panel.
- * Version:           2.0.0
+ * Version:           2.0.1
  * Author:            Sajjad Hossain Sagor
  * Author URI:        https://sajjadhsagor.com/
  * License:           GPL-2.0+
@@ -29,26 +29,26 @@ if ( ! defined( 'WPINC' ) ) die;
 /**
  * Currently plugin version.
  */
-define( 'WPEU_VERSION', '2.0.0' );
+define( 'WP_EDIT_USERNAME_VERSION', '2.0.1' );
 
 /**
  * Define Plugin Folders Path
  */
-define( 'WPEU_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'WP_EDIT_USERNAME_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-define( 'WPEU_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'WP_EDIT_USERNAME_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-define( 'WPEU_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'WP_EDIT_USERNAME_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-plugin-activator.php
  * 
- * @since    1.0.0
+ * @since    2.0.0
  */
 function activate_wp_edit_username()
 {
-	require_once WPEU_PLUGIN_PATH . 'includes/class-plugin-activator.php';
+	require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'includes/class-plugin-activator.php';
 	
 	WP_Edit_Username_Activator::activate();
 }
@@ -59,11 +59,11 @@ register_activation_hook( __FILE__, 'activate_wp_edit_username' );
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-plugin-name-deactivator.php
  * 
- * @since    1.0.0
+ * @since    2.0.0
  */
 function deactivate_wp_edit_username()
 {
-	require_once WPEU_PLUGIN_PATH . 'includes/class-plugin-deactivator.php';
+	require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'includes/class-plugin-deactivator.php';
 	
 	WP_Edit_Username_Deactivator::deactivate();
 }
@@ -72,11 +72,11 @@ register_deactivation_hook( __FILE__, 'deactivate_wp_edit_username' );
 
 /**
  * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
+ * and admin-specific hooks.
  * 
- * @since    1.0.0
+ * @since    2.0.0
  */
-require WPEU_PLUGIN_PATH . 'includes/class-plugin.php';
+require WP_EDIT_USERNAME_PLUGIN_PATH . 'includes/class-plugin.php';
 
 /**
  * Begins execution of the plugin.
@@ -85,7 +85,7 @@ require WPEU_PLUGIN_PATH . 'includes/class-plugin.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    2.0.0
  */
 function run_wp_edit_username()
 {

@@ -4,12 +4,12 @@
  * Settings API wrapper class
  *
  * @version   1.0.0
- * @package   WP_Edit_Username_Settings_API
+ * @package   Sajjad_Dev_Settings_API
  * @author    Sajjad Hossain Sagor <sagorh672@gmail.com>
  */
-if ( ! class_exists( 'WP_Edit_Username_Settings_API' ) ):
+if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ):
 
-class WP_Edit_Username_Settings_API
+class Sajjad_Dev_Settings_API
 {
 	/**
 	 * settings sections array
@@ -272,8 +272,8 @@ class WP_Edit_Username_Settings_API
 		foreach ( $args['options'] as $key => $label )
 		{
 			$checked  = isset( $value[$key] ) ? $value[$key] : '0';
-			$html    .= sprintf( '<label for="wpeu-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
-			$html    .= sprintf( '<input type="checkbox" class="checkbox" id="wpeu-%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $checked, $key, false ) );
+			$html    .= sprintf( '<label for="sajjaddev-%1$s[%2$s][%3$s]">', $args['section'], $args['id'], $key );
+			$html    .= sprintf( '<input type="checkbox" class="checkbox" id="sajjaddev-%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $checked, $key, false ) );
 			$html    .= sprintf( '%1$s</label><br>',  $label );
 		}
 
@@ -295,8 +295,8 @@ class WP_Edit_Username_Settings_API
 
 		foreach ( $args['options'] as $key => $label )
 		{
-			$html .= sprintf( '<label for="wpeu-%1$s[%2$s][%3$s]">',  $args['section'], $args['id'], $key );
-			$html .= sprintf( '<input type="radio" class="radio" id="wpeu-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
+			$html .= sprintf( '<label for="sajjaddev-%1$s[%2$s][%3$s]">',  $args['section'], $args['id'], $key );
+			$html .= sprintf( '<input type="radio" class="radio" id="sajjaddev-%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />', $args['section'], $args['id'], $key, checked( $value, $key, false ) );
 			$html .= sprintf( '%1$s</label><br>', $label );
 		}
 
@@ -398,8 +398,8 @@ class WP_Edit_Username_Settings_API
 		$id     = $args['section']  . '[' . $args['id'] . ']';
 		$label  = isset( $args['options']['button_label'] ) ? $args['options']['button_label'] : __( 'Choose File' );
 
-		$html   = sprintf( '<input type="text" class="%1$s-text wpeu-url" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
-		$html  .= '<input type="button" class="button wpeu-browse" style="margin-left: 5px;" value="' . $label . '" />';
+		$html   = sprintf( '<input type="text" class="%1$s-text sajjaddev-url" id="%2$s[%3$s]" name="%2$s[%3$s]" value="%4$s"/>', $size, $args['section'], $args['id'], $value );
+		$html  .= '<input type="button" class="button sajjaddev-browse" style="margin-left: 5px;" value="' . $label . '" />';
 		$html  .= $this->get_field_description( $args );
 
 		echo $html;
@@ -618,16 +618,12 @@ class WP_Edit_Username_Settings_API
 			<div class="metabox-holder">
 				<?php $this->script(); ?>
 				<?php foreach ( $this->settings_sections as $form ) { ?>
-					<div ted="dad" id="<?php echo $form['id']; ?>" class="group" style="display: none;">
+					<div id="<?php echo $form['id']; ?>" class="group" style="display: none;">
 						<form method="post" action="options.php">
 							<?php
-								do_action( 'wpeu_form_top_' . $form['id'], $form );
-								
 								settings_fields( $form['id'] );
 								
-								do_settings_sections( $form['id'] );
-								
-								do_action( 'wpeu_form_bottom_' . $form['id'], $form );
+								do_settings_sections( $form['id'] );								
 							?>
 							<div><?php submit_button(); ?></div>
 						</form>
@@ -725,7 +721,7 @@ class WP_Edit_Username_Settings_API
 					evt.preventDefault();
 				} );
 
-				$( '.wpeu-browse' ).on( 'click', function ( event )
+				$( '.sajjaddev-browse' ).on( 'click', function ( event )
 				{
 					event.preventDefault();
 
@@ -745,7 +741,7 @@ class WP_Edit_Username_Settings_API
 					{
 						attachment = file_frame.state().get( 'selection' ).first().toJSON();
 						
-						self.prev( '.wpeu-url' ).val( attachment.url ).change();
+						self.prev( '.sajjaddev-url' ).val( attachment.url ).change();
 					} );
 
 					// Finally, open the modal

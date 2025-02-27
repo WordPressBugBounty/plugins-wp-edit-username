@@ -3,7 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * Defines the plugin name, version, and options, settings api
+ * Defines the plugin name, version, other methods and
  * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @package    WP_Edit_Username
@@ -15,7 +15,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -24,7 +24,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -33,7 +33,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * The plugin options.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 * @var      array    $options    Holds saved/default value of plugin options.
 	 */
@@ -42,7 +42,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * The plugin options api wrapper object.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 * @var      array    $settings_api    Holds the plugin settings api wrapper class object.
 	 */
@@ -51,7 +51,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @param    string    $plugin_name       The name of this plugin.
 	 * @param    string    $version    The version of this plugin.
 	 */
@@ -63,13 +63,13 @@ class WP_Edit_Username_Admin
 		
 		$this->options 		= get_option( 'wpeu_register_settings_fields', [] );
 		
-		$this->settings_api = new WP_Edit_Username_Settings_API;
+		$this->settings_api = new Sajjad_Dev_Settings_API;
 	}
 
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function enqueue_styles()
 	{
@@ -78,16 +78,16 @@ class WP_Edit_Username_Admin
 		// check if current page is edit user page and current user can edit user information
 		if( in_array( $pagenow, array( 'profile.php', 'user-edit.php' ) ) && current_user_can( 'edit_users' ) )
 		{
-			wp_enqueue_style( $this->plugin_name . '_bootstrap', WPEU_PLUGIN_URL . 'admin/css/bootstrap.min.css', [], $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name . '_bootstrap', WP_EDIT_USERNAME_PLUGIN_URL . 'admin/css/bootstrap.min.css', [], $this->version, 'all' );
 			
-			wp_enqueue_style( $this->plugin_name, WPEU_PLUGIN_URL . 'admin/css/admin.css', [], $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name, WP_EDIT_USERNAME_PLUGIN_URL . 'admin/css/admin.css', [], $this->version, 'all' );
 		}
 	}
 
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function enqueue_scripts()
 	{
@@ -96,9 +96,9 @@ class WP_Edit_Username_Admin
 		// check if current page is edit user page and current user can edit user information
 		if( in_array( $pagenow, array( 'profile.php', 'user-edit.php' ) ) && current_user_can( 'edit_users' ) )
 		{
-			wp_enqueue_script( $this->plugin_name . '_bootstrap', WPEU_PLUGIN_URL . 'admin/js/bootstrap.bundle.min.js', [], $this->version, false );
+			wp_enqueue_script( $this->plugin_name . '_bootstrap', WP_EDIT_USERNAME_PLUGIN_URL . 'admin/js/bootstrap.bundle.min.js', [], $this->version, false );
 			
-			wp_enqueue_script( $this->plugin_name, WPEU_PLUGIN_URL . 'admin/js/admin.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name, WP_EDIT_USERNAME_PLUGIN_URL . 'admin/js/admin.js', array( 'jquery' ), $this->version, false );
 			
 			wp_localize_script( $this->plugin_name, 'WP_Edit_Username',
 				array( 
@@ -111,7 +111,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * Show edit username form modal.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function show_edit_modal()
 	{
@@ -120,21 +120,21 @@ class WP_Edit_Username_Admin
 		// check if current page is edit user page and current user can edit user information
 		if( in_array( $pagenow, array( 'profile.php', 'user-edit.php' ) ) && current_user_can( 'edit_users' ) )
 		{
-			require_once WPEU_PLUGIN_PATH . 'admin/partials/edit-username-form-modal.php';
+			require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'admin/partials/edit-username-form-modal.php';
 		}
 	}
 
 	/**
 	 * Adds a settings link to the plugin's action links on the plugin list table.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 *
 	 * @param    array $links The existing array of plugin action links.
 	 * @return   array The updated array of plugin action links, including the settings link.
 	 */
 	public function add_plugin_action_links( $links )
 	{
-		$links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=wp-edit-username' ), __( 'Settings', 'wp-edit-username' ) );
+		$links[] = sprintf( '<a href="%s">%s</a>', admin_url( 'admin.php?page=wp-edit-username' ), __( 'Settings', 'wp-edit-username' ) );
 		
 		return $links;
 	}
@@ -185,7 +185,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * Returns the settings sections for the plugin settings page.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 *
 	 * @return array An array of settings sections, where each section is an array
 	 *               with 'id' and 'title' keys.
@@ -205,7 +205,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * Returns all the settings fields for the plugin settings page.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 *
 	 * @return array An array of settings fields, organized by section ID.  Each
 	 *               section ID is a key in the array, and the value is an array
@@ -256,7 +256,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * Handles the AJAX request to update the username.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * 
 	 * @return   void Sends a JSON response indicating success or failure.
 	 */

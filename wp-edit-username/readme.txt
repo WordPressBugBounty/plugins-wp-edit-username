@@ -3,7 +3,7 @@ Contributors: sajjad67
 Tags: user-profile,profile-edit,ajax,change-username,username
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,8 @@ Update inputs according to your requirement and you are good to go.
 4. After Username Changed Message.
 
 == Changelog ==
+= 2.0.1 =
+- Minor changes in codebase only.
 = 2.0.0 =
 - Major changes in codebase. Compatibility checkup for latest wp version 6.7, updated bootstrap to latest, removed unused css and added confirmation before submitting username change form. 
 = 1.0.8 =

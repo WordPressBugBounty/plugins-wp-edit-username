@@ -8,7 +8,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.0
+ * @since      2.0.0
  * @package    WP_Edit_Username
  * @subpackage WP_Edit_Username/includes
  * @author     Sajjad Hossain Sagor <sagorh672@gmail.com>
@@ -19,7 +19,7 @@ class WP_Edit_Username
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   protected
 	 * @var      WP_Edit_Username_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
@@ -28,7 +28,7 @@ class WP_Edit_Username
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
@@ -37,7 +37,7 @@ class WP_Edit_Username
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -50,13 +50,13 @@ class WP_Edit_Username
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function __construct()
 	{
-		if ( defined( 'WPEU_VERSION' ) )
+		if ( defined( 'WP_EDIT_USERNAME_VERSION' ) )
 		{
-			$this->version = WPEU_VERSION;
+			$this->version = WP_EDIT_USERNAME_VERSION;
 		}
 		else
 		{
@@ -75,14 +75,14 @@ class WP_Edit_Username
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Plugin_Name_Loader. Orchestrates the hooks of the plugin.
-	 * - Plugin_Name_i18n. Defines internationalization functionality.
-	 * - Plugin_Name_Admin. Defines all hooks for the admin area.
+	 * - WP_Edit_Username_Loader. Orchestrates the hooks of the plugin.
+	 * - WP_Edit_Username_i18n. Defines internationalization functionality.
+	 * - WP_Edit_Username_Admin. Defines all hooks for the admin area.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 */
 	private function load_dependencies()
@@ -91,23 +91,23 @@ class WP_Edit_Username
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once WPEU_PLUGIN_PATH . 'includes/class-plugin-loader.php';
+		require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'includes/class-plugin-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once WPEU_PLUGIN_PATH . 'includes/class-plugin-i18n.php';
+		require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'includes/class-plugin-i18n.php';
 
 		/**
 		 * The class responsible for defining options api wrapper
 		 */
-		require_once WPEU_PLUGIN_PATH . 'includes/class-plugin-settings-api.php';
+		require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'includes/class-plugin-settings-api.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once WPEU_PLUGIN_PATH . 'admin/class-plugin-admin.php';
+		require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'admin/class-plugin-admin.php';
 
 		$this->loader = new WP_Edit_Username_Loader();
 	}
@@ -115,10 +115,10 @@ class WP_Edit_Username
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Plugin_Name_i18n class in order to set the domain and to register the hook
+	 * Uses the WP_Edit_Username_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 */
 	private function set_locale()
@@ -132,7 +132,7 @@ class WP_Edit_Username
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @access   private
 	 */
 	private function define_admin_hooks()
@@ -144,7 +144,7 @@ class WP_Edit_Username
 		
 		$this->loader->add_action( 'admin_footer', $plugin_admin, 'show_edit_modal' );
 		
-		$this->loader->add_action( 'plugin_action_links_' . WPEU_PLUGIN_BASENAME, $plugin_admin, 'add_plugin_action_links' );
+		$this->loader->add_action( 'plugin_action_links_' . WP_EDIT_USERNAME_PLUGIN_BASENAME, $plugin_admin, 'add_plugin_action_links' );
 		
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_init' );
@@ -155,7 +155,7 @@ class WP_Edit_Username
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function run()
 	{
@@ -166,7 +166,7 @@ class WP_Edit_Username
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
+	 * @since     2.0.0
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name()
@@ -177,8 +177,8 @@ class WP_Edit_Username
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
-	 * @return    Plugin_Name_Loader    Orchestrates the hooks of the plugin.
+	 * @since     2.0.0
+	 * @return    WP_Edit_Username_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader()
 	{
@@ -188,7 +188,7 @@ class WP_Edit_Username
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
+	 * @since     2.0.0
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version()

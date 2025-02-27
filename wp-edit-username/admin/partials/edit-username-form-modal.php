@@ -17,7 +17,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h2 class="modal-title" id="exampleModalLabel"><?php echo __( 'Enter New Username', 'wp-edit-username' ); ?></h2>
+				<h2 class="modal-title"><?php echo __( 'Enter New Username', 'wp-edit-username' ); ?></h2>
 			</div>
 			<div class="modal-body">
 				<div class="alert" role="alert" id="wpeu_message"></div>
@@ -38,4 +38,4 @@
 	</div>
 </div>
 
-<style>.updating::before{ background-image: url("<?php echo esc_url( WPEU_PLUGIN_URL . '/admin/images/loading.gif' ); ?>"); }</style>
+<style>.updating::before{ background-image: url("<?php echo esc_url( WP_EDIT_USERNAME_PLUGIN_URL . '/admin/images/loading.gif' ); ?>"); }</style>
