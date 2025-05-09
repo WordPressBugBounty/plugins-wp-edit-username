@@ -3,8 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * Defines the plugin name, version, other methods and
- * enqueue the admin-specific stylesheet and JavaScript.
+ * Defines the plugin name, version and other methods.
  *
  * @package    WP_Edit_Username
  * @subpackage WP_Edit_Username/admin
@@ -78,8 +77,6 @@ class WP_Edit_Username_Admin
 		// check if current page is edit user page and current user can edit user information
 		if( in_array( $pagenow, array( 'profile.php', 'user-edit.php' ) ) && current_user_can( 'edit_users' ) )
 		{
-			wp_enqueue_style( $this->plugin_name . '_bootstrap', WP_EDIT_USERNAME_PLUGIN_URL . 'admin/css/bootstrap.min.css', [], $this->version, 'all' );
-			
 			wp_enqueue_style( $this->plugin_name, WP_EDIT_USERNAME_PLUGIN_URL . 'admin/css/admin.css', [], $this->version, 'all' );
 		}
 	}
@@ -96,8 +93,6 @@ class WP_Edit_Username_Admin
 		// check if current page is edit user page and current user can edit user information
 		if( in_array( $pagenow, array( 'profile.php', 'user-edit.php' ) ) && current_user_can( 'edit_users' ) )
 		{
-			wp_enqueue_script( $this->plugin_name . '_bootstrap', WP_EDIT_USERNAME_PLUGIN_URL . 'admin/js/bootstrap.bundle.min.js', [], $this->version, false );
-			
 			wp_enqueue_script( $this->plugin_name, WP_EDIT_USERNAME_PLUGIN_URL . 'admin/js/admin.js', array( 'jquery' ), $this->version, false );
 			
 			wp_localize_script( $this->plugin_name, 'WP_Edit_Username',
@@ -142,7 +137,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * Adds the plugin settings page to the WordPress dashboard menu.
 	 *
-	 * @since    1.0.6
+	 * @since    2.0.0
 	 */
 	public function admin_menu()
 	{
@@ -159,7 +154,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * Renders the plugin settings page form.
 	 *
-	 * @since    1.0.6
+	 * @since    2.0.0
 	 */
 	public function menu_page()
 	{
@@ -169,7 +164,7 @@ class WP_Edit_Username_Admin
 	/**
 	 * Register Plugin Options Via Settings API
 	 *
-	 * @since    1.0.6
+	 * @since    2.0.0
 	 */
 	public function admin_init()
 	{
@@ -219,7 +214,7 @@ class WP_Edit_Username_Admin
 			'wpeu_register_settings_fields' => array(
 				array(
 					'name'    => 'wpeu_send_email_field',
-					'label'   => __( 'Send Email', 'javascript-obfuscator' ),
+					'label'   => __( 'Send Email', 'wp-edit-username' ),
 					'type'    => 'checkbox',
 					'desc'    => __( 'Checking this box will enable sending emails to respective recipients when username change action happens.', 'wp-edit-username' )
 				),

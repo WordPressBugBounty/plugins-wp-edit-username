@@ -3,7 +3,8 @@
 /**
  * The core plugin class.
  *
- * This is used to define internationalization, admin-specific hooks
+ * This is used to define internationalization, admin-specific hooks, and
+ * public-facing site hooks.
  *
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
@@ -68,6 +69,7 @@ class WP_Edit_Username
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
+		$this->define_public_hooks();
 	}
 
 	/**
@@ -78,6 +80,7 @@ class WP_Edit_Username
 	 * - WP_Edit_Username_Loader. Orchestrates the hooks of the plugin.
 	 * - WP_Edit_Username_i18n. Defines internationalization functionality.
 	 * - WP_Edit_Username_Admin. Defines all hooks for the admin area.
+	 * - WP_Edit_Username_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -108,6 +111,12 @@ class WP_Edit_Username
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'admin/class-plugin-admin.php';
+
+		/**
+		 * The class responsible for defining all actions that occur in the public-facing
+		 * side of the site.
+		 */
+		require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'public/class-plugin-public.php';
 
 		$this->loader = new WP_Edit_Username_Loader();
 	}
@@ -150,6 +159,18 @@ class WP_Edit_Username
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_init' );
 		
 		$this->loader->add_action( 'wp_ajax_wpeu_update_user_name', $plugin_admin, 'update_user_name' );
+	}
+
+	/**
+	 * Register all of the hooks related to the public-facing functionality
+	 * of the plugin.
+	 *
+	 * @since    2.0.0
+	 * @access   private
+	 */
+	private function define_public_hooks()
+	{
+		$plugin_public = new WP_Edit_Username_Public( $this->get_plugin_name(), $this->get_version() );
 	}
 
 	/**
