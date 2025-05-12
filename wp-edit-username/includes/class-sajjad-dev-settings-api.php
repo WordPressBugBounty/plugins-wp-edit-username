@@ -21,24 +21,70 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Settings sections array
 		 *
-		 * @var array
+		 * @since     2.0.0
+		 * @access    protected
+		 * @var       array
 		 */
 		protected $settings_sections = array();
 
 		/**
 		 * Settings fields array.
 		 *
-		 * @var array
+		 * @since     2.0.0
+		 * @access    protected
+		 * @var       array
 		 */
 		protected $settings_fields = array();
 
 		/**
 		 * Allowed html tags array.
 		 *
-		 * @var array
+		 * @since     2.0.0
+		 * @access    protected
+		 * @var       array
 		 */
 		protected $allowed_html_tags = array(
+			'a'        => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'href'   => true,
+				'target' => true,
+				'data-*' => true,
+			),
+			'b'        => array(),
+			'br'       => array(),
+			'button'   => array(
+				'id'       => true,
+				'class'    => true,
+				'style'    => true,
+				'data-*'   => true,
+				'disabled' => true,
+				'name'     => true,
+				'type'     => true,
+				'value'    => true,
+			),
+			'code'     => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+			),
 			'div'      => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+			),
+			'em'       => array(),
+			'fieldset' => array(
+				'id'       => true,
+				'class'    => true,
+				'style'    => true,
+				'disabled' => true,
+				'data-*'   => true,
+			),
+			'h1'       => array(
 				'id'     => true,
 				'class'  => true,
 				'style'  => true,
@@ -50,29 +96,37 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 				'style'  => true,
 				'data-*' => true,
 			),
-			'p'        => array(
+			'h3'       => array(
 				'id'     => true,
 				'class'  => true,
 				'style'  => true,
 				'data-*' => true,
 			),
-			'a'        => array(
+			'h4'       => array(
 				'id'     => true,
 				'class'  => true,
 				'style'  => true,
-				'href'   => true,
-				'target' => true,
 				'data-*' => true,
 			),
-			'br'       => array(),
-			'code'     => array(),
-			'label'    => array(
+			'h5'       => array(
 				'id'     => true,
 				'class'  => true,
 				'style'  => true,
-				'for'    => true,
 				'data-*' => true,
 			),
+			'h6'       => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+			),
+			'hr'       => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+			),
+			'i'        => array(),
 			'input'    => array(
 				'id'          => true,
 				'class'       => true,
@@ -90,6 +144,63 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 				'step'        => true,
 				'data-*'      => true,
 			),
+			'img'      => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+				'alt'    => true,
+				'height' => true,
+				'src'    => true,
+				'width'  => true,
+			),
+			'label'    => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'for'    => true,
+				'data-*' => true,
+			),
+			'li'       => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+			),
+			'ol'       => array(
+				'id'       => true,
+				'class'    => true,
+				'style'    => true,
+				'data-*'   => true,
+				'start'    => true,
+				'type'     => true,
+				'reversed' => true,
+			),
+			'option'   => array(
+				'value'    => true,
+				'selected' => true,
+				'disabled' => true,
+				'data-*'   => true,
+			),
+			'p'        => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+			),
+			'pre'      => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+			),
+			'span'     => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+			),
+			'strong'   => array(),
 			'select'   => array(
 				'id'       => true,
 				'class'    => true,
@@ -100,18 +211,53 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 				'disabled' => true,
 				'data-*'   => true,
 			),
-			'option'   => array(
-				'value'    => true,
-				'selected' => true,
-				'disabled' => true,
-				'data-*'   => true,
+			'svg'      => array(
+				'id'      => true,
+				'class'   => true,
+				'style'   => true,
+				'title'   => true,
+				'height'  => true,
+				'viewbox' => true,
+				'version' => true,
+				'width'   => true,
+				'data-*'  => true,
 			),
-			'fieldset' => array(
-				'id'       => true,
-				'class'    => true,
-				'style'    => true,
-				'disabled' => true,
-				'data-*'   => true,
+			'path'     => array(
+				'd'      => true,
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'title'  => true,
+				'data-*' => true,
+			),
+			'table'    => array(
+				'id'          => true,
+				'class'       => true,
+				'style'       => true,
+				'data-*'      => true,
+				'align'       => true,
+				'bgcolor'     => true,
+				'border'      => true,
+				'cellpadding' => true,
+				'cellspacing' => true,
+			),
+			'tbody'    => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+				'align'  => true,
+			),
+			'td'       => array(
+				'id'      => true,
+				'class'   => true,
+				'style'   => true,
+				'data-*'  => true,
+				'align'   => true,
+				'bgcolor' => true,
+				'colspan' => true,
+				'rowspan' => true,
+				'scope'   => true,
 			),
 			'textarea' => array(
 				'id'          => true,
@@ -126,10 +272,53 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 				'disabled'    => true,
 				'data-*'      => true,
 			),
+			'tfoot'    => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+				'align'  => true,
+			),
+			'th'       => array(
+				'id'      => true,
+				'class'   => true,
+				'style'   => true,
+				'data-*'  => true,
+				'align'   => true,
+				'bgcolor' => true,
+				'colspan' => true,
+				'rowspan' => true,
+				'scope'   => true,
+			),
+			'thead'    => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+				'align'  => true,
+			),
+			'tr'       => array(
+				'id'      => true,
+				'class'   => true,
+				'style'   => true,
+				'data-*'  => true,
+				'align'   => true,
+				'bgcolor' => true,
+			),
+			'ul'       => array(
+				'id'     => true,
+				'class'  => true,
+				'style'  => true,
+				'data-*' => true,
+				'type'   => true,
+			),
 		);
 
 		/**
 		 * Enqueue scripts and styles for the settings page.
+		 *
+		 * @since     2.0.0
+		 * @access    public
 		 */
 		public function __construct() {
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -137,9 +326,13 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 
 		/**
 		 * Enqueue scripts and styles
+		 *
+		 * @since     2.0.0
+		 * @access    public
 		 */
 		public function admin_enqueue_scripts() {
-			wp_enqueue_script( 'jquery' ); // load core jQuery library.
+			// load core jQuery library.
+			wp_enqueue_script( 'jquery' );
 
 			wp_enqueue_style( 'wp-color-picker' );
 
@@ -151,7 +344,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Set settings sections
 		 *
-		 * @param array $sections Setting sections array.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $sections Setting sections array.
 		 */
 		public function set_sections( $sections ) {
 			$this->settings_sections = $sections;
@@ -162,7 +357,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Add a single section
 		 *
-		 * @param array $section Single section.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $section Single section.
 		 */
 		public function add_section( $section ) {
 			$this->settings_sections[] = $section;
@@ -173,7 +370,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Set settings fields
 		 *
-		 * @param array $fields Settings fields array.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $fields Settings fields array.
 		 */
 		public function set_fields( $fields ) {
 			$this->settings_fields = $fields;
@@ -184,8 +383,10 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Add a field
 		 *
-		 * @param array $section Single section.
-		 * @param array $field Field data.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $section Single section.
+		 * @param     array $field   Field data.
 		 */
 		public function add_field( $section, $field ) {
 			$defaults = array(
@@ -211,6 +412,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		 *
 		 * This function gets the initiated settings sections and fields. Then
 		 * registers them to WordPress and ready for use.
+		 *
+		 * @since     2.0.0
+		 * @access    public
 		 */
 		public function admin_init() {
 			// Register settings sections.
@@ -272,7 +476,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Get field description for display
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function get_field_description( $args ) {
 			return ! empty( $args['desc'] ) ? sprintf( '<p class="description">%s</p>', $args['desc'] ) : '';
@@ -281,7 +487,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a text field for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_text( $args ) {
 			$value       = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
@@ -297,7 +505,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a url field for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_url( $args ) {
 			$this->callback_text( $args );
@@ -306,7 +516,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a number field for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_number( $args ) {
 			$value       = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
@@ -325,7 +537,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a checkbox for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_checkbox( $args ) {
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
@@ -342,7 +556,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a multicheckbox for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_multicheck( $args ) {
 			$value = $this->get_option( $args['id'], $args['section'], $args['std'] );
@@ -365,7 +581,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a radio button for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_radio( $args ) {
 			$value = $this->get_option( $args['id'], $args['section'], $args['std'] );
@@ -386,7 +604,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a selectbox for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_select( $args ) {
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
@@ -406,7 +626,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a multi selectbox for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_multiselect( $args ) {
 			$value = $this->get_option( $args['id'], $args['section'], array() );
@@ -426,7 +648,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a textarea for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_textarea( $args ) {
 			$value       = esc_textarea( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
@@ -441,16 +665,20 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays the html for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_html( $args ) {
-			echo wp_kses_post( $this->get_field_description( $args ) );
+			echo wp_kses( $this->get_field_description( $args ), $this->allowed_html_tags );
 		}
 
 		/**
 		 * Displays a rich text textarea for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_wysiwyg( $args ) {
 			$value = $this->get_option( $args['id'], $args['section'], $args['std'] );
@@ -472,13 +700,15 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 
 			echo '</div>';
 
-			echo wp_kses_post( $this->get_field_description( $args ) );
+			echo wp_kses( $this->get_field_description( $args ), $this->allowed_html_tags );
 		}
 
 		/**
 		 * Displays a file upload field for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_file( $args ) {
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
@@ -495,7 +725,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a password field for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_password( $args ) {
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
@@ -509,7 +741,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a color picker field for a settings field
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_color( $args ) {
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
@@ -523,7 +757,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Displays a select box for creating the pages select box
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_pages( $args ) {
 			$dropdown_args = array(
@@ -533,13 +769,15 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 				'echo'     => 0,
 			);
 
-			echo wp_kses_post( wp_dropdown_pages( $dropdown_args ) );
+			echo wp_kses( wp_dropdown_pages( $dropdown_args ), $this->allowed_html_tags );
 		}
 
 		/**
 		 * Displays a select box for creating the categories select box
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_categories( $args ) {
 			$dropdown_args = array(
@@ -550,13 +788,15 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 				'hide_empty' => 0,
 			);
 
-			echo wp_kses_post( wp_dropdown_categories( $dropdown_args ) );
+			echo wp_kses( wp_dropdown_categories( $dropdown_args ), $this->allowed_html_tags );
 		}
 
 		/**
 		 * Displays a select box for creating the categories select box
 		 *
-		 * @param array $args settings field args.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $args Settings field args.
 		 */
 		public function callback_users( $args ) {
 			$dropdown_args = array(
@@ -569,15 +809,16 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 				'role__not_in' => isset( $args['role__not_in'] ) ? $args['role__not_in'] : array(),
 			);
 
-			echo wp_kses_post( wp_dropdown_users( $dropdown_args ) );
+			echo wp_kses( wp_dropdown_users( $dropdown_args ), $this->allowed_html_tags );
 		}
 
 		/**
 		 * Sanitize callback for Settings API
 		 *
-		 * @param  array $options options to sanitize.
-		 *
-		 * @return mixed
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     array $options Options to sanitize.
+		 * @return    mixed
 		 */
 		public function sanitize_options( $options ) {
 			if ( ! $options ) {
@@ -601,9 +842,10 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Get sanitization callback for given option slug
 		 *
-		 * @param  string $slug option slug.
-		 *
-		 * @return mixed string or bool false
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     string $slug Option slug.
+		 * @return    mixed        String or Bool false
 		 */
 		public function get_sanitize_callback( $slug = '' ) {
 			if ( empty( $slug ) ) {
@@ -628,11 +870,12 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		/**
 		 * Get the value of a settings field
 		 *
-		 * @param  string $option settings field name.
-		 * @param  string $section the section name this field belongs to.
-		 * @param  string $default_val default text if it's not found.
-		 *
-		 * @return string
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     string $option      Settings field name.
+		 * @param     string $section     The section name this field belongs to.
+		 * @param     string $default_val Default text if it's not found.
+		 * @return    string
 		 */
 		public function get_option( $option, $section, $default_val = '' ) {
 			$options = get_option( $section );
@@ -648,6 +891,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		 * Show navigations as tab
 		 *
 		 * Shows all the settings section labels as tab
+		 *
+		 * @since     2.0.0
+		 * @access    public
 		 */
 		public function show_navigation() {
 			$html  = '<h2 class="nav-tab-wrapper">';
@@ -672,7 +918,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		 *
 		 * This function displays every sections in a different form
 		 *
-		 * @param string $button_text save button text.
+		 * @since     2.0.0
+		 * @access    public
+		 * @param     string $button_text Save button text.
 		 */
 		public function show_forms( $button_text = '' ) {
 			?>
@@ -700,6 +948,9 @@ if ( ! class_exists( 'Sajjad_Dev_Settings_API' ) ) :
 		 * Tabbable JavaScript codes & Initiate Color Picker
 		 *
 		 * This code uses localstorage for displaying active tabs
+		 *
+		 * @since     2.0.0
+		 * @access    public
 		 */
 		public function script() {
 			?>
