@@ -59,7 +59,7 @@ class WP_Edit_Username {
 	 * @access    public
 	 */
 	public function __construct() {
-		$this->version     = defined( 'WP_EDIT_USERNAME_VERSION' ) ? WP_EDIT_USERNAME_VERSION : '1.0.0';
+		$this->version     = defined( 'WP_EDIT_USERNAME_PLUGIN_VERSION' ) ? WP_EDIT_USERNAME_PLUGIN_VERSION : '1.0.0';
 		$this->plugin_name = 'wp-edit-username';
 
 		$this->load_dependencies();
@@ -75,7 +75,7 @@ class WP_Edit_Username {
 	 *
 	 * - WP_Edit_Username_Loader. Orchestrates the hooks of the plugin.
 	 * - WP_Edit_Username_i18n.   Defines internationalization functionality.
-	 * - Sajjad_Dev_Settings_API. Provides an interface for interacting with the WordPress Options API.
+	 * - Sajjad_Dev_Settings_API. Provides an interface for interacting with the WordPress Settings API.
 	 * - WP_Edit_Username_Admin.  Defines all hooks for the admin area.
 	 * - WP_Edit_Username_Public. Defines all hooks for the public side of the site.
 	 *
@@ -99,7 +99,7 @@ class WP_Edit_Username {
 		require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'includes/class-wp-edit-username-i18n.php';
 
 		/**
-		 * The class responsible for defining an interface for interacting with the WordPress Options API.
+		 * The class responsible for defining an interface for interacting with the WordPress Settings API.
 		 */
 		require_once WP_EDIT_USERNAME_PLUGIN_PATH . 'includes/class-sajjad-dev-settings-api.php';
 
@@ -217,6 +217,7 @@ class WP_Edit_Username {
 	 * value for the specified field.
 	 *
 	 * @since     2.0.0
+	 * @static
 	 * @access    public
 	 * @param     string $option        The name of the settings field.
 	 * @param     string $section       The name of the section this field belongs to. This corresponds
