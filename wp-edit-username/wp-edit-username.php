@@ -13,8 +13,8 @@
  * Plugin Name:       WP Edit Username
  * Plugin URI:        https://wordpress.org/plugins/wp-edit-username/
  * Description:       Change WordPress User's Username From Edit User Admin Panel.
- * Version:           2.0.3
- * Requires at least: 6.5
+ * Version:           2.0.4
+ * Requires at least: 5.6
  * Requires PHP:      8.0
  * Author:            Sajjad Hossain Sagor
  * Author URI:        https://sajjadhsagor.com/
@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'WP_EDIT_USERNAME_VERSION', '2.0.3' );
+define( 'WP_EDIT_USERNAME_VERSION', '2.0.4' );
 
 /**
  * Define Plugin Folders Path
@@ -72,8 +72,7 @@ function on_deactivate_wp_edit_username() {
 register_deactivation_hook( __FILE__, 'on_deactivate_wp_edit_username' );
 
 /**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks and public facing hooks.
+ * The core plugin class that is used to define admin-specific and public-facing hooks.
  *
  * @since    2.0.0
  */
